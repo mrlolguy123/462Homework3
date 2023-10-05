@@ -1,0 +1,3 @@
+/home/dannle/IdeaProjects/InPostFix/cmake-build-debug/CMakeFiles/InPostFix.dir
+/home/dannle/IdeaProjects/InPostFix/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/dannle/IdeaProjects/InPostFix/cmake-build-debug/CMakeFiles/rebuild_cache.dir
