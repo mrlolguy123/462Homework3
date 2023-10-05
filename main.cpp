@@ -27,12 +27,23 @@ std::string inToPost(std::string str)
     std::string post = "";
     std::stack<char> operatorStack;
 
-    return str;
+    for(int x = 0; x<str.length(); x++)
+    {
+        if(isOp(str.at(x))) { operatorStack.push(str.at(x)); }
+        else
+            post = post + str.at(x);
+    }
+
+    while(!operatorStack.empty())
+    {
+        post = post + operatorStack.top();
+        operatorStack.pop();
+    }
+
+    return post;
 }
 
 int main() {
-    std::string balls;
-    std::cout << "The: ";
-    std::cin >> balls;
-    std::cout << "PLEASE " << inToPost(balls) << std::endl;
+    std::string infix = "5+9-2+1";
+    std::cout << inToPost(infix);
 }
