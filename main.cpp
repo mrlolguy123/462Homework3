@@ -14,17 +14,11 @@ bool isOperand(char c)
 
 int prdnc(char c)
 {
-    switch(c)
-    {
-        case '+':
-        case '-':
-            return 1;
-        case '*':
-        case '/':
-            return 2;
-        default:
-            return 0;
-    }
+    if(c == '+' || c == '-')
+        return 1;
+    if(c == '*' || c == '/')
+        return 2;
+    return -1;
 }
 
 std::string inToPost(std::string str)
@@ -49,19 +43,23 @@ std::string inToPost(std::string str)
         }
 
         else if(str.at(x) == ')') { // if ), pop all in stack
-            while(opStack.top() != '(') { post = post + opStack.top(); opStack.pop(); } // all pops go to post exp
+            while(opStack.top() != '(') {
+                post = post + opStack.top();
+                opStack.pop(); } // all pops go to post
             opStack.pop(); // get rid of last '('
         }
 
         else if(isOperator(str.at(x))) {
-            while(prdnc(str.at(x)) <= prdnc(opStack.top()))
-                post = post + opStack.top(); opStack.pop();
+            while(!opStack.empty() && prdnc(str.at(x)) <= prdnc(opStack.top())) { // check for if stack is empty and if scanned operator's precedence is less than or equal to the stack's precedence
+                post = post + opStack.top();
+                opStack.pop();
+            }
             opStack.push(str.at(x));
         }
 
     }
 
-    while(opStack.size() != 0)
+    while(opStack.size() != 0) // pop the rest of the terms
     {
         post = post + opStack.top();
         opStack.pop();
@@ -72,7 +70,9 @@ std::string inToPost(std::string str)
 }
 
 int main() {
-    std::string infix = "5+9-2+1";
+    std::string infix;
+    std::cout << "Enter infix expression: ";
+    std::cin >> infix;
     std::cout << "Length of infix: " << infix.length() << std::endl;
     std::cout << inToPost(infix);
 }
