@@ -1,0 +1,3 @@
+"C:\Program Files\JetBrains\CLion 2023.2.1\bin\cmake\win\x64\bin\cmake.exe" -E rm -f CMakeFiles\InPostFix.dir/objects.a
+C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\ar.exe qc CMakeFiles\InPostFix.dir/objects.a @CMakeFiles\InPostFix.dir\objects1.rsp
+C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\G__~1.EXE -g -Wl,--whole-archive CMakeFiles\InPostFix.dir/objects.a -Wl,--no-whole-archive -o InPostFix.exe -Wl,--out-implib,libInPostFix.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\InPostFix.dir\linkLibs.rsp

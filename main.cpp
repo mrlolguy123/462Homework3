@@ -12,7 +12,7 @@ bool isOperand(char c)
     return (c <= '9' && c >= '0');
 }
 
-int prdnc(char c)
+int prdnc(char c) // prdnc was the best i could think of for shortening precedence
 {
     if(c == '+' || c == '-')
         return 1;
@@ -28,11 +28,8 @@ std::string inToPost(std::string str)
 
     for(int x = 0; x<str.length(); x++)
     {
-        std::cout << x << ". Post = " << post << std::endl;
-
-        if(str.at(x) == ' ') {
-            continue; // skip whitespace
-        }
+        if(str.at(x) == ' ') // ignore whitespace
+            continue;
 
         if(isOperand(str.at(x))) {
             post = post + str.at(x); // if operand, add to post
@@ -64,15 +61,14 @@ std::string inToPost(std::string str)
         post = post + opStack.top();
         opStack.pop();
     }
-
-    std::cout << "Done" << std::endl;
     return post;
 }
 
 int main() {
     std::string infix;
     std::cout << "Enter infix expression: ";
-    std::cin >> infix;
+    std::getline(std::cin, infix);
+
     std::cout << "Length of infix: " << infix.length() << std::endl;
     std::cout << inToPost(infix);
 }
